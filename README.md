@@ -34,16 +34,16 @@ The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both trai
 
 ### ROC and AUC
 
-![avatar](./fig/roc_auc.png)
+![roc_auc](./fig/roc_auc.png)
 
 We can see that AUC becomes bigger as window size gets bigger. Window size 12 is the best.
 
 ### Acc, f1, precision and recall
 
 When window size = 12, the metrics are shown below.
-![avatar](./fig/metrics.png)
+![other_metrics](./fig/metrics.png)
 
 ### detection trajectory
 
 When window size = 12, 
-![avatar](./fig/trajectory.png)
+![trajectory](./fig/trajectory.png)
