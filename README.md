@@ -13,6 +13,7 @@ This is a record for my experiment on BATADAL dataset.
 BATADAL is a time series dataset for anomaly detection. It describes whether the water distribution system is under attack with time going by.
 
 This dataset is proposed in the publication below.
+
 ***Taormina R, Galelli S, Tippenhauer N O, et al. Battle of the Attack Detection Algorithms: Disclosing cyber attacks on water distribution networks[J]. Journal of Water Resources Planning and Management, 2018, 144(8).***
 
 Details of this dataset can be found here https://github.com/scy-phy/www.batadal.net and here http://www.batadal.net/.
@@ -22,6 +23,7 @@ Details of this dataset can be found here https://github.com/scy-phy/www.batadal
 ## Code
 
 The code I used is downloaded from https://github.com/rtaormina/aeed. This is the source code for the following publication.
+
 ***Taormina, R. and Galelli, S., 2018. Deep-Learning Approach to the Detection and Localization of Cyber-Physical Attacks on Water Distribution Systems. Journal of Water Resources Planning and Management, 144(10), p.04018065.***
 
 The anomaly detection model in the code is AutoEncoder with 7 layers. By checking if the reconstruction error is bigger than the threshold we set, we can tell whether it's an anomaly.
