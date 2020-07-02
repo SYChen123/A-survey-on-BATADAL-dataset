@@ -21,12 +21,12 @@ This survey consists of the following part.
     - [Other researches on BATADAL dataset](#other-researches-on-batadal-dataset)
       - [1. Abdulaziz Almehmadi.](#1-abdulaziz-almehmadi)
       - [2. Erba et al.](#2-erba-et-al)
-  - [Experiment records](#experiment-records)
-    - [Code](#code)
-    - [Results](#results)
-      - [ROC and AUC](#roc-and-auc)
-      - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
-      - [detection trajectory](#detection-trajectory)
+- [Experiment records](#experiment-records)
+  - [Code](#code)
+  - [Results](#results)
+    - [ROC and AUC](#roc-and-auc)
+    - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
+    - [detection trajectory](#detection-trajectory)
 
 
 
@@ -132,10 +132,10 @@ They proposed white box and black box attack algorithms to evade detection of th
 	
 
 
-## Experiment records
+# Experiment records
 
 
-### Code
+## Code
 
 The code I used is downloaded from https://github.com/rtaormina/aeed. This is the source code for the following publication.
 
@@ -149,19 +149,19 @@ In testing phase, it uses BATADAL_dataset04 and BATADAL_test_dataset for evaluat
 
 
 
-### Results
+## Results
 
 The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both train and val set.
 
 
-#### ROC and AUC
+### ROC and AUC
 
 ![roc_auc](./fig/roc_auc.png)
 
 We can see that AUC becomes bigger as window size gets bigger. Window size 12 is the best. But if you care more about reducing the number of false alarms, then window size 3 is better, which can be concluded by the following comparison.
 
 
-#### Acc, f1 score, precision and recall
+### Acc, f1 score, precision and recall
 
 Window size = 1,
 ![1](./fig/metrics1.png)
@@ -176,7 +176,7 @@ Window size = 12,
 ![12](./fig/metrics12.png)
 
 
-#### detection trajectory
+### detection trajectory
 
 Window size = 3,
 ![trajectory_3](./fig/trajectory3.png)
