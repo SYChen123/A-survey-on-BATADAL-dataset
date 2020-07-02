@@ -6,9 +6,12 @@
 ## Introduction
 
 This survey consists of the following part.
-    ```--``` Brief introduction on BATADAL dataset. 
-    ```--``` A summary of other researchers' work on BATADAL dataset.
-    ```--``` The record of my experimental details and results.
+
+    `--` Brief introduction on BATADAL dataset. 
+
+    `--` A summary of other researchers' work on BATADAL dataset.
+
+    `--` The record of my experimental details and results.
 
 
 
