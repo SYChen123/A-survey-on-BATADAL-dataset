@@ -139,6 +139,7 @@ This paper is different from papers above since it focuses on the techniques to 
 #### 3. Taormina et al.
 
 ***Deep-Learning Approach to the Detection and Localization of Cyber-Physical Attacks on Water Distribution Systems***
+
 Data-driven approach. They apply AutoEncoder to the BATADAL dataset to detect and localize the anomalies. In my following experiment on BATADAL, I use the source code of this paper to see how it performs on BATADAL dataset. 
 
 	
