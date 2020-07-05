@@ -43,19 +43,20 @@ This dataset is proposed in the publication below.
 Details of this dataset can be found here https://github.com/scy-phy/www.batadal.net and here http://www.batadal.net/
 
 
-
+</br>
 
 ## Summary of researches on BATADAL dataset
 
 
 After that the water distribution systems(WDS) have upgraded from physical systems into cyber-physical systems, WDS is more vulnerable and susceptible to cyber attacks. More specifically, the element named supervisory control and data acquisition systems(SCADA) makes WDS more vulnerable to attacks. Hence there are more needs for developing powerful and reliable cyber-attack detection techniques or systems. Cyber-attacks detection techniques are either model-driven or data-driven.
 
-
+</br>
 
 ### BATADAL competition
 
 Here comes the research teams who took the BATADAL competition and introduction of their papers. The results of these research teams can be found on the official website of BATADAL. http://www.batadal.net/results.html
 
+</br>
 
 #### 1. Housh et al.
 
@@ -63,6 +64,7 @@ Here comes the research teams who took the BATADAL competition and introduction 
 
 Model-driven approach. Firstly estimate the demand based on partial SCADA readings. Secondly simulate the hydraulics based on the estimated demand using *EPANET*, a physically based water hydraulics simulation model. Next calculate the errors between SCADA readings and simulated values. Finally apply moving average and decision rules on the errors to find anomalies.
 
+</br>
 
 #### 2. Abokifa et al.
 
@@ -75,6 +77,7 @@ In 2018, Abokifa et al. made some improvement on his previous aforementioned wor
     b. apply semi-supervised learning structure, adding the data that is predicted to be normal to the trusted dataset to retrain the model.
     c. Alarm watch window.
 
+</br>
 
 #### 3. Giacomoni et al.
 
@@ -83,6 +86,7 @@ In 2018, Abokifa et al. made some improvement on his previous aforementioned wor
 Data-driven and Convex optimization-based approach.
 The first step of the algorithm is to apply actuator rule verification and data verification(some rules set manually to identify whether the system is under attack). If there is no anomaly reported after the first step, then apply an optimization-based detection algorithm to detect attacks further. 
 
+</br>
 
 #### 4. Brentan et al.
 
@@ -90,6 +94,7 @@ The first step of the algorithm is to apply actuator rule verification and data 
 
 Data-driven approach. Apply NARX model to predict the future state of the water distribution system. And then for a series error terms, which are obtained by computing the difference between prediction and measured data, use standard deviation of error terms to detect and localize possible anomalies.
 
+</br>
 
 #### 5. Chandy et al.
 
@@ -99,6 +104,7 @@ Data-driven approach. It's comprised of 2 parts. The first part is rule-based me
 
 In 2018, Chandy et al. refined their work by only using variational autoencoder and discarding the rule-based part in their previous work. The refinement is elaborated in the paper ***Cyberattack Detection using Deep Generative Models with Variational Inference***.
 
+</br>
 
 #### 6. Posha et al.
 
@@ -106,6 +112,7 @@ In 2018, Chandy et al. refined their work by only using variational autoencoder 
 
 Data-driven approach. The method consists of 3 modules. The first one is to check if the data point is consistent with the control rules. The second one is pattern recognition. The model is trained on normal data to define normal behavior patterns. The third one is developed based on the relationships between the components of water distribution systems. This part is for confirming the attack events detected by the aforementioned modules.
 
+</br>
 
 #### 7. Aghashahi et al.
 
@@ -114,6 +121,7 @@ Data-driven approach. The method consists of 3 modules. The first one is to chec
 Data-driven approach. The algorithm is composed of 3 parts. The first part is to preprocess the data. It's actually to remove the time and flag attributes in the input .csv file. The second part is to train a random forest. Here is how they get input training data ready. Firstly compute average lag-0 covariance matrix A for normal series and average lag-1 covariance matrix B for anomalous series. Then for a time point t, compute lag-0 covariance matrix C for it. Finally the input data for RF is (||C-A||, ||C-B||). The third part is to test the model.
 
 
+</br>
 
 ### Other researches on BATADAL dataset
 
@@ -121,6 +129,7 @@ In this section, some other researches using BATADAL dataset is shown below. Alt
 
 This section still needs to be completed.
 
+</br>
 
 #### 1. Abdulaziz Almehmadi.
 
@@ -128,6 +137,7 @@ This section still needs to be completed.
 
 Treat the intrusion detection task as binary classification. They firstly extract some features from SCADA readings manually and then apply PCA to select some crucial features. Finally train naïve bayes, svm and random forest separately to see which algorithm performs the best. And random forest can mitigate the impact that imbalanced data has so it performs the best compared with naïve bayes and svm.
 
+</br>
 
 #### 2. Erba et al.
 
@@ -135,6 +145,7 @@ Treat the intrusion detection task as binary classification. They firstly extrac
 
 This paper is different from papers above since it focuses on the techniques to **evade detection** rather than detect anomalies. In the paper, the authors proposed white box and black box attack algorithms to evade detection of the system. It's an very interesting work. As for white box, since the assumption is attackers know how detection system is performed, they modify some variables of the anomalous data in order to craft hard-to-recognize anomalies. As for black box, they use adversarial trained autoencoder to generate anomalies with pertubations. In terms of evaluation, they use BATADAL dataset and WADI dataset.
 
+</br>
 
 #### 3. Taormina et al.
 
