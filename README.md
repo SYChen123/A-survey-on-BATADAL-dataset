@@ -11,7 +11,6 @@ This survey consists of the following part.
   - [Dataset](#dataset)
   - [Summary of researches on BATADAL dataset](#summary-of-researches-on-batadal-dataset)
     - [BATADAL competition](#batadal-competition)
-      - [1. Housh et al.](#1-housh-et-al)
       - [2. Abokifa et al.](#2-abokifa-et-al)
       - [3. Giacomoni et al.](#3-giacomoni-et-al)
       - [4. Brentan et al.](#4-brentan-et-al)
@@ -24,6 +23,7 @@ This survey consists of the following part.
       - [3. Taormina et al.](#3-taormina-et-al)
 - [My experiment records](#my-experiment-records)
   - [Code](#code)
+    - [](#)
   - [Results](#results)
     - [ROC and AUC](#roc-and-auc)
     - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
@@ -43,27 +43,23 @@ This dataset is proposed in the publication below.
 Details of this dataset can be found here https://github.com/scy-phy/www.batadal.net and here http://www.batadal.net/
 
 
-</br>
 
 ## Summary of researches on BATADAL dataset
 
 
 After that the water distribution systems(WDS) have upgraded from physical systems into cyber-physical systems, WDS is more vulnerable and susceptible to cyber attacks. More specifically, the element named supervisory control and data acquisition systems(SCADA) makes WDS more vulnerable to attacks. Hence there are more needs for developing powerful and reliable cyber-attack detection techniques or systems. Cyber-attacks detection techniques are either model-driven or data-driven.
 
-</br>
 
 ### BATADAL competition
 
 Here comes the research teams who took the BATADAL competition and introduction of their papers. The results of these research teams can be found on the official website of BATADAL. http://www.batadal.net/results.html
 
-</br>
 
-#### 1. Housh et al.
+1. Housh et al.
 
-***Model-based approach for cyber-physical attack detection in water distribution systems***
+- ***Model-based approach for cyber-physical attack detection in water distribution systems***
 
-Model-driven approach. Firstly estimate the demand based on partial SCADA readings. Secondly simulate the hydraulics based on the estimated demand using *EPANET*, a physically based water hydraulics simulation model. Next calculate the errors between SCADA readings and simulated values. Finally apply moving average and decision rules on the errors to find anomalies.
-
+- Model-driven approach. Firstly estimate the demand based on partial SCADA readings. Secondly simulate the hydraulics based on the estimated demand using *EPANET*, a physically based water hydraulics simulation model. Next calculate the errors between SCADA readings and simulated values. Finally apply moving average and decision rules on the errors to find anomalies.
 </br>
 
 #### 2. Abokifa et al.
@@ -76,7 +72,6 @@ In 2018, Abokifa et al. made some improvement on his previous aforementioned wor
     a. add one more module named actuator rules verification, which detect anomalies by checking if the rules are satisfied, e.g. the pump should be ON when the water level in the tank is below a minimum value.
     b. apply semi-supervised learning structure, adding the data that is predicted to be normal to the trusted dataset to retrain the model.
     c. Alarm watch window.
-
 </br>
 
 #### 3. Giacomoni et al.
@@ -85,7 +80,6 @@ In 2018, Abokifa et al. made some improvement on his previous aforementioned wor
 
 Data-driven and Convex optimization-based approach.
 The first step of the algorithm is to apply actuator rule verification and data verification(some rules set manually to identify whether the system is under attack). If there is no anomaly reported after the first step, then apply an optimization-based detection algorithm to detect attacks further. 
-
 </br>
 
 #### 4. Brentan et al.
@@ -93,7 +87,6 @@ The first step of the algorithm is to apply actuator rule verification and data 
 ***On-line cyber attack detection in water networks through state forecasting and control by pattern recognition***
 
 Data-driven approach. Apply NARX model to predict the future state of the water distribution system. And then for a series error terms, which are obtained by computing the difference between prediction and measured data, use standard deviation of error terms to detect and localize possible anomalies.
-
 </br>
 
 #### 5. Chandy et al.
@@ -103,7 +96,6 @@ Data-driven approach. Apply NARX model to predict the future state of the water 
 Data-driven approach. It's comprised of 2 parts. The first part is rule-based method, checking if the operation/physical rules are broken. The output is a set of flagged events. It's a bit like the verification step in the algorithm proposed by Giacomni et al. The second part is used to confirm the flagged events. It's composed of a convolutional variational autoencoder. Autoencoder is trained on normal data. Given a new data point, we can determine whether it's an anomaly by the reconstruction probability. 
 
 In 2018, Chandy et al. refined their work by only using variational autoencoder and discarding the rule-based part in their previous work. The refinement is elaborated in the paper ***Cyberattack Detection using Deep Generative Models with Variational Inference***.
-
 </br>
 
 #### 6. Posha et al.
@@ -111,7 +103,6 @@ In 2018, Chandy et al. refined their work by only using variational autoencoder 
 ***An approach to detect the cyber-physical attack on water distribution system***
 
 Data-driven approach. The method consists of 3 modules. The first one is to check if the data point is consistent with the control rules. The second one is pattern recognition. The model is trained on normal data to define normal behavior patterns. The third one is developed based on the relationships between the components of water distribution systems. This part is for confirming the attack events detected by the aforementioned modules.
-
 </br>
 
 #### 7. Aghashahi et al.
@@ -129,7 +120,6 @@ In this section, some other researches using BATADAL dataset is shown below. Alt
 
 This section still needs to be completed.
 
-</br>
 
 #### 1. Abdulaziz Almehmadi.
 
@@ -153,8 +143,8 @@ This paper is different from papers above since it focuses on the techniques to 
 
 Data-driven approach. They apply AutoEncoder to the BATADAL dataset to detect and localize the anomalies. In my following experiment on BATADAL, I use the source code of this paper to see how it performs on BATADAL dataset. 
 
-	
 
+</br>
 
 # My experiment records
 
@@ -164,6 +154,8 @@ Data-driven approach. They apply AutoEncoder to the BATADAL dataset to detect an
 The code I use is downloaded from https://github.com/rtaormina/aeed. This is the source code for the following publication.
 
 ***Taormina, R. and Galelli, S., 2018. Deep-Learning Approach to the Detection and Localization of Cyber-Physical Attacks on Water Distribution Systems. Journal of Water Resources Planning and Management, 144(10), p.04018065.***
+
+### 
 
 The anomaly detection model in the code is AutoEncoder with 7 layers. By checking if the reconstruction error is bigger than the threshold we set, we can tell whether it's an anomaly.
 
