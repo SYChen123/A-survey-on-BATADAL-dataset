@@ -52,7 +52,7 @@ Here comes the research teams who took the BATADAL competition and introduction 
 
 - Paper: ***Model-based approach for cyber-physical attack detection in water distribution systems***
 
-- Idea: Model-driven approach. Firstly estimate the demand based on partial SCADA readings. Secondly simulate the hydraulics based on the estimated demand using *EPANET*, a physically based water hydraulics simulation model. Next calculate the errors between SCADA readings and simulated values. Finally apply moving average and decision rules on the errors to find anomalies.
+- Idea: Model-driven approach. Firstly estimate the demand based on partial SCADA readings. Secondly simulate the hydraulics based on the estimated demand using *EPANET*, a physically based water hydraulics simulation model. Next calculate the errors between SCADA readings and simulated values. Finally apply moving average with different lags and decision rules on the errors to find anomalies.
 
 2. Abokifa et al.
 
@@ -147,7 +147,7 @@ It's a prediction-based method. It's trained on normal data to learn its pattern
 
 In training phase, firstly split BATADAL_dataset03 into train set and validation set. Then normalize the data. Next, the model is trained with early stop and learning rate decay. The optimizer is Adam and loss function is Mean Square Error. For each epoch, losses on train set and val set are calculated.
 
-Note that while training, we don't need labels of the sequences explicitly since AE is self-supervised. The input is also the groundtruth.
+Note that while training, we don't need labels of the sequences explicitly since AE is self-supervised. Input is also the groundtruth.
 
 ### Test
 
@@ -169,7 +169,7 @@ The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both trai
 ![roc_auc](./fig/roc_auc.png)
 </br>
 
-We can see that AUC becomes bigger as window size gets bigger. Window size 12 is the best. But if you care more about reducing the number of false alarms, then window size 3 is better, which can be concluded by the following comparison.
+We can see that AUC becomes bigger as window size gets bigger. Window size 12 is the best from the perspective of AUC. But if you care more about reducing the number of false alarms, then window size 3 is better, which can be concluded by the following comparison.
 
 
 ### Acc, f1 score, precision and recall
