@@ -13,14 +13,20 @@ This survey consists of the following part.
     - [BATADAL competition](#batadal-competition)
     - [Other researches on BATADAL dataset](#other-researches-on-batadal-dataset)
 - [My experiment records](#my-experiment-records)
-  - [Code](#code)
+  - [AutoEncoder](#autoencoder)
+    - [Source code](#source-code)
     - [Model](#model)
     - [Train and validate](#train-and-validate)
     - [Test](#test)
-  - [Results](#results)
-    - [ROC and AUC](#roc-and-auc)
-    - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
-    - [detection trajectory](#detection-trajectory)
+    - [Results](#results)
+      - [ROC and AUC](#roc-and-auc)
+      - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
+      - [detection trajectory](#detection-trajectory)
+  - [Other baseline algorithms](#other-baseline-algorithms)
+    - [Implementation](#implementation)
+    - [Results](#results-1)
+      - [acc, f1 score, precision, recall](#acc-f1-score-precision-recall)
+      - [roc and auc](#roc-and-auc-1)
 
 
 
@@ -130,8 +136,11 @@ This section still needs to be completed.
 
 # My experiment records
 
+In my experiment, AutoEncoder and some other algorithms like LOF are applied to BATADAL dataset. Let's see how well they perform!
 
-## Code
+## AutoEncoder
+
+### Source code
 
 The code I use is downloaded from https://github.com/rtaormina/aeed. This is the source code for the following publication.
 
@@ -151,7 +160,7 @@ Note that while training, we don't need labels of the sequences explicitly since
 
 ### Test
 
-In testing phase, it uses BATADAL_dataset04 and BATADAL_test_dataset for evaluation. Firstly set threshold as quantile of the reconstruction errors on validation set. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
+In testing phase, it uses BATADAL_dataset04 and BATADAL_test_dataset for evaluation. Firstly set threshold as quantile of the reconstruction errors on validation set. Then apply moving average to the recontruction errors and compare errors with threshold to make predictions. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
 
 In terms of drawing the ROC curve, a few different thresholds need to be set. For each of the thresholds, compare it with the reconstruction errors on test set to make predictions. Next compare the predictions with labels and we can get a (false positive rate, true positive rate) pair for one threshold. Finally, these pairs constitute one ROC curve.
 
@@ -159,12 +168,12 @@ For window size, it's related to moving average. Moving average is applied to th
  
 
 
-## Results
+### Results
 
 The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both train and val set.
 
 
-### ROC and AUC
+#### ROC and AUC
 
 ![roc_auc](./fig/roc_auc.png)
 </br>
@@ -172,7 +181,7 @@ The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both trai
 We can see that AUC becomes bigger as window size gets bigger. Window size 12 is the best from the perspective of AUC. But if you care more about reducing the number of false alarms, then window size 3 is better, which can be concluded by the following comparison.
 
 
-### Acc, f1 score, precision and recall
+#### Acc, f1 score, precision and recall
 
 Window size = 1,
 ![1](./fig/metrics1.png)
@@ -187,7 +196,29 @@ Window size = 12,
 ![12](./fig/metrics12.png)
 
 
-### detection trajectory
+#### detection trajectory
 
 Window size = 3,
 ![trajectory_3](./fig/trajectory3.png)
+
+</br>
+</br>
+
+
+## Other baseline algorithms
+
+In this section, I apply 5 algorithms, one-class svm, isolation forest, LOF, KNN and XGBOD to BATADAL dataset to see their performance. My code is here. https://github.com/SYChen123/Baseline-outlier-detection-algorithms-on-BATADAL-dataset
+
+### Implementation
+
+All these algorithms are implemented in pyod. pyod assumes that the training data is more or less contaminated. Therefore, I use dataset04 to train the models and test_dataset to evaluate.
+
+### Results
+
+#### acc, f1 score, precision, recall
+
+![](fig/baseline_metrics.png)
+
+#### roc and auc
+
+![](fig/baseline_roc_auc.png)
