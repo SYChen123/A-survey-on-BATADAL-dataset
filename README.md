@@ -184,21 +184,26 @@ We can see that AUC becomes bigger as window size gets bigger. Window size 12 is
 #### Acc, f1 score, precision and recall
 
 Window size = 1,
+
 ![1](./fig/metrics1.png)
 
 Window size = 3,
+
 ![3](./fig/metrics3.png)
 
 Window size = 6,
+
 ![6](./fig/metrics6.png)
 
 Window size = 12,
+
 ![12](./fig/metrics12.png)
 
 
 #### detection trajectory
 
 Window size = 3,
+
 ![trajectory_3](./fig/trajectory3.png)
 
 </br>
