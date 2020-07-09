@@ -222,8 +222,8 @@ All these algorithms are implemented in pyod. pyod assumes that the training dat
 
 #### acc, f1 score, precision, recall
 
-![](fig/baseline_metrics.png)
+![metrics](fig/baseline_metrics.png)
 
 #### roc and auc
 
-![](fig/baseline_roc_auc.png)
+![roc and auc](fig/baseline_roc_auc.png)
