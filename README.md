@@ -17,14 +17,12 @@ This survey consists of the following part.
     - [Source code](#source-code)
     - [Model](#model)
     - [Train and validate](#train-and-validate)
-    - [Test](#test)
-    - [Results](#results)
+    - [Evaluation](#evaluation)
       - [ROC and AUC](#roc-and-auc)
       - [Acc, f1 score, precision and recall](#acc-f1-score-precision-and-recall)
       - [detection trajectory](#detection-trajectory)
   - [Other baseline algorithms](#other-baseline-algorithms)
-    - [Implementation](#implementation)
-    - [Results](#results-1)
+    - [Evaluation Results](#evaluation-results)
       - [acc, f1 score, precision, recall](#acc-f1-score-precision-recall)
       - [roc and auc](#roc-and-auc-1)
 
@@ -154,23 +152,19 @@ It's a prediction-based method. It's trained on normal data to learn its pattern
 
 ### Train and validate
 
-In training phase, firstly split BATADAL_dataset03 into train set and validation set. Then normalize the data. Next, the model is trained with early stop and learning rate decay. The optimizer is Adam and loss function is Mean Square Error. For each epoch, losses on train set and val set are calculated.
+In training phase, firstly split BATADAL_dataset03.csv into train set and validation set. Then normalize the data. Next, the model is trained with early stop and learning rate decay. The optimizer is Adam and loss function is Mean Square Error. For each epoch, losses on train set and val set are calculated.
 
 Note that while training, we don't need labels of the sequences explicitly since AE is self-supervised. Input is also the groundtruth.
 
-### Test
+The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both train and val set.
 
-In testing phase, it uses BATADAL_dataset04 and BATADAL_test_dataset for evaluation. Firstly set threshold as quantile of the reconstruction errors on validation set. Then apply moving average to the recontruction errors and compare errors with threshold to make predictions. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
+### Evaluation
+
+In evaluation phase, it uses BATADAL_dataset04.csv and BATADAL_test_dataset.csv. Firstly set threshold as quantile of the reconstruction errors on validation set. Then apply moving average to the recontruction errors and compare errors with threshold to make predictions. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
 
 In terms of drawing the ROC curve, a few different thresholds need to be set. For each of the thresholds, compare it with the reconstruction errors on test set to make predictions. Next compare the predictions with labels and we can get a (false positive rate, true positive rate) pair for one threshold. Finally, these pairs constitute one ROC curve.
 
 For window size, it's related to moving average. Moving average is applied to the reconstruction errors before comparing with threshold and we can get a smoothed error sequence. The window size is a hyperparameter and multiple ROC curves and AUCs are generated under different window sizes.
- 
-
-
-### Results
-
-The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both train and val set.
 
 
 #### ROC and AUC
@@ -212,13 +206,10 @@ Window size = 3,
 
 ## Other baseline algorithms
 
-In this section, I apply 5 algorithms, one-class svm, isolation forest, LOF, KNN and XGBOD to BATADAL dataset to see their performance. My code is here. https://github.com/SYChen123/Baseline-outlier-detection-algorithms-on-BATADAL-dataset
+In this section, I apply 5 baseline algorithms, one-class SVM, Isolation Forest, LOF, KNN and XGBOD to BATADAL dataset to see their performance. My code is here. https://github.com/SYChen123/Baseline-outlier-detection-algorithms-on-BATADAL-dataset
 
-### Implementation
 
-All these algorithms are implemented in pyod. pyod assumes that the training data is more or less contaminated. Therefore, I use dataset04 to train the models and test_dataset to evaluate.
-
-### Results
+### Evaluation Results
 
 #### acc, f1 score, precision, recall
 
