@@ -160,7 +160,7 @@ The model is trained for 21 epochs on dataset03. The loss is 0.0011 on both trai
 
 ### Evaluation
 
-In evaluation phase, it uses BATADAL_dataset04.csv and BATADAL_test_dataset.csv. Firstly set threshold as 0.995 percentile of the reconstruction errors on validation samples. Then apply moving average to the recontruction errors and compare errors with threshold to make predictions. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
+In evaluation phase, it uses BATADAL_dataset04.csv and BATADAL_test_dataset.csv. Firstly set threshold as 99.5th percentile of the reconstruction errors on validation samples. Then apply moving average to the recontruction errors and compare errors with threshold to make predictions. Next, compute accuracy, f1-score, precision, recall on these 2 test sets and draw the detection trajectory. Finally, draw the ROC curves and compute AUC under different **window sizes**.
 
 In terms of drawing the ROC curve, a few different thresholds need to be set. For each of the thresholds, compare it with the reconstruction errors on test samples to make predictions. Next compare the predictions with labels and we can get a (false positive rate, true positive rate) pair for one threshold. Finally, these pairs constitute one ROC curve.
 
